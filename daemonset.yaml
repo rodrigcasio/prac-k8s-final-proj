@@ -15,10 +15,51 @@ spec:
     spec:
       containers:
       - name: myapp-container
-        image: us.icr.io/<your SN labs namespace>/myapp:v1
+        image: us.icr.io/sn-labs-rodcasio/myapp:v1
         ports:
         - containerPort: 3000
           name: http
       tolerations:
       - key: node-role.kubernetes.io/master
         effect: NoSchedule
+
+# # Explanation of code:
+#
+# apiVersion: apps/v1: This line specifies the Kubernetes API version that this YAML file adheres to. In this case, it uses the API version for Kubernetes applications, which is apps/v1.
+# kind: DaemonSet: This line specifies the Kubernetes resource type being defined in this YAML file. In this case, it is a DaemonSet. DaemonSet ensures that all (or some) nodes run a copy of a specific pod.
+#
+# metadata:
+#   name: myapp-daemonset
+#   labels:
+#     app: myapp
+#
+# The above lines specify metadata about the DaemonSet. It gives the DaemonSet a name (myapp-daemonset) and attaches labels to it. 
+# Labels are key-value pairs used to organize and select subsets of objects. In this case, the label app: myapp is attached to this DaemonSet.
+#
+# spec:
+#   selector:
+#     matchLabels:
+#       app: myapp
+#
+# The above lines define the selector for the DaemonSet. 
+# It specifies how the DaemonSet identifies which pods it should manage. Here, it selects pods with the label app: myapp.
+#
+#     spec:
+#       containers:
+#       - name: myapp-container
+#         image: us.icr.io/<your SN labs namespace>/myapp:v1
+#         ports:
+#         - containerPort: 3000
+#           name: http
+#
+# The above lines define the specification for the containers within the pods.
+# It specifies the name of the container (myapp-container), the Docker image to use, and the ports to expose. In this case, it exposes port 3000 with the name http.
+#
+#       tolerations:
+#       - key: node-role.kubernetes.io/master
+#         effect: NoSchedule
+#
+# The above lines define tolerations for the DaemonSet pods. Tolerations allow pods to be scheduled onto nodes with matching taints. 
+# Here, it tolerates the taint with the key node-role.kubernetes.io/master and the effect NoSchedule, meaning it can be scheduled on nodes with the master role.
+#
+
