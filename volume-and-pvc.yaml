@@ -10,7 +10,20 @@ spec:
   hostPath:
     path: /data
 
+## Explanation for PV PersistentVolume
+    # kind: PersistentVolume: It indicates that this YAML describes a PersistentVolume resource.
+    # metadata: It contains metadata about the PersistentVolume.
+    # name: myapp-volume: It specifies the name of the PersistentVolume, which is 'myapp-volume' in this case.
+    # spec: This defines the specification of the PersistentVolume.
+    # capacity: It specifies the capacity of the PersistentVolume.
+    # storage: 1Gi: This indicates that the PersistentVolume has a storage capacity of 1 gigabyte.
+    # `accessModes: It defines the access modes for the PersistentVolume.
+    #     ReadWriteOnce: Specifies that the volume can be mounted as read-write by a single node.
+    #     hostPath: Specifies a host path volume source.
+    #     path: /data: Indicates that the PersistentVolume is backed by a directory on the host (/data in this case).
+
 ---
+# This creates a PVC PersistentVolumeClaim
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -21,3 +34,22 @@ spec:
   resources:
     requests:
       storage: 1Gi
+
+# Code Explanation
+    #
+    # apiVersion: v1: Specifies the Kubernetes API version being used for the PersistentVolumeClaim.
+    #
+    # kind: PersistentVolumeClaim: Indicates that this YAML describes a PersistentVolumeClaim resource.
+    #
+    # metadata: Contains metadata about the PersistentVolumeClaim.
+    #
+    # name: myapp-pvc: Specifies the name of the PersistentVolumeClaim, which is myapp-pvc in this case.
+    #
+    # spec: Defines the specification of the PersistentVolumeClaim.
+    #
+    # accessModes: Defines the access modes for the PersistentVolumeClaim.
+    #     ReadWriteOnce: Specifies that the volume can be mounted as read-write by a single node.
+    #     resources: Specifies the resource requirements for the PersistentVolumeClaim.
+    #     requests: Indicates the requested resources.
+    #     storage: 1Gi: Specifies that the PersistentVolumeClaim requests a storage capacity of 1 gigabyte.
+

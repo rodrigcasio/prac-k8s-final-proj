@@ -10,3 +10,37 @@ spec:
       port: 80
       targetPort: 3000
   type: NodePort
+
+# # Code explanation
+# apiVersion: v1: This line specifies the Kubernetes API version that this YAML file adheres to.
+# In this case, it's using the core/v1 API version, which is the most basic Kubernetes API version.
+#
+# kind: Service: This line specifies the Kubernetes resource type being defined in this YAML file.
+# In this case, it's a Service. A Service in Kubernetes is an abstraction that defines a logical set of pods and defines a policy for accessing them.
+#
+# metadata:
+#   name: myapp-service
+#
+# The above lines specify metadata about the Service, giving it a name (myapp-service).
+#
+# spec:
+#   selector:
+#     app: myapp
+#
+# These lines define the selector for the Service, specifying which pods the Service should target based on their labels.
+# In this case, it selects pods with the label app: myapp.
+#
+#   ports:
+#     - protocol: TCP
+#       port: 80
+#       targetPort: 3000
+#
+# These lines define the ports configuration for the Service. It specifies the ports to expose on the Service and where to forward the traffic.
+# Here, it exposes port 80 on the Service and forwards traffic to port 3000 on the pods.
+#
+# type: NodePort 
+#
+# This line specifies the type of Service as NodePort. 
+# It is a Kubernetes Services that exposes the Service on a specific port of each node in the cluster for clients to access it.
+
+

@@ -20,7 +20,7 @@ spec:
         app: myapp
     spec:
       containers:
-      - image: us.icr.io/<your SN labs namespace>/myapp:v1
+      - image: us.icr.io/sn-labs-rodcasio/myapp:v1
         imagePullPolicy: Always
         name: myapp
         ports:
@@ -31,3 +31,34 @@ spec:
             cpu: 50m
           requests:
             cpu: 20m
+
+              # Explanation of code:
+
+    # apiVersion: apps/v1 specifies the version of the Kubernetes API being used and the resource type (Deployment).
+    #
+    # kind: Deployment indicates that this YAML defines a Deployment object.
+    #
+    # metadata section includes metadata about the Deployment, such as its name and labels.
+    #
+    # spec section defines the desired state for the Deployment, including the number of replicas, update strategy, and pod template.
+    #
+    # replicas: 1 specifies that there should be one replica of the application running.
+    #
+    # selector defines how the Deployment finds which Pods to manage, using labels.
+    #
+    # strategy specifies the update strategy for the Deployment, here using rolling updates with certain constraints.
+    #
+    # template describes the Pod template used for creating new Pods.
+    #
+    # containers lists the containers within the Pod.
+    #
+    # image specifies the Docker image to use for the container.
+    #
+    # imagePullPolicy: Always ensures that the latest image is always pulled from the registry.
+    #
+    # name assigns a name to the container.
+    #
+    # ports section specifies which ports should be exposed by the container.
+    #
+    # resources defines resource requests and limits for the container, such as CPU.
+    #
